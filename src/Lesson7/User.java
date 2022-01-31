@@ -1,6 +1,7 @@
 package Lesson7;
 
-public class User {
+
+public class User implements Comparable {
     String login;
     String password;
     UserTypes type;
@@ -8,6 +9,30 @@ public class User {
     public User(String login, String password, UserTypes type) {
         this.login = login;
         this.password = password;
+        this.type = type;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public UserTypes getType() {
+        return type;
+    }
+
+    public void setType(UserTypes type) {
         this.type = type;
     }
 
@@ -22,7 +47,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return this.login.hashCode() + 11 * this.password.hashCode() + type.ordinal();
+        return this.login.hashCode() + 7 * this.password.hashCode() + type.ordinal();
     }
 
     @Override
@@ -36,7 +61,9 @@ public class User {
 
     }
 
-    public boolean equalsWithHashcode(Object obj) {
+    public boolean equalsWithHashcode(User obj) {
+        int result = this.login.compareTo(obj.login);
+
         if (obj == null) return false;
         if (!(obj instanceof User)) return false;
         User that = (User) obj;
@@ -44,6 +71,16 @@ public class User {
             return true;
         return false;
 
+    }
+
+    @Override
+    public int compareTo(Object obj) {
+        User that = (User) obj;
+        if (this.type.getProcessOrder() > that.type.getProcessOrder())
+            return 1;
+        if (this.type.getProcessOrder() < that.type.getProcessOrder())
+            return -1;
+        return 0;
     }
 }
 
