@@ -8,15 +8,16 @@ public class MainCollections {
     public static void main(String[] args) {
         System.out.println("Created objects:");
         ArrayList<User> users = new ArrayList<>(10);
-        createCollection(users);
+        Random random = new Random();
+        createCollection(users, random);
         printHashCodes(users);
         TreeSet<User> usersTreeSet = new TreeSet<>(users);
+
         System.out.println("Sorted treeset collection:");
         printTreeSet(usersTreeSet);
     }
 
-    private static void createCollection(ArrayList<User> users) {
-        Random random = new Random();
+    private static void createCollection(ArrayList<User> users, Random random) {
         int a = 0;
         int b = 10000;
         for (int i = 1; i < 11; i++) {

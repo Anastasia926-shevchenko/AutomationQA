@@ -4,6 +4,7 @@ package Lesson7;
 public class User implements Comparable {
     String login;
     String password;
+    int a;
     UserTypes type;
 
     public User(String login, String password, UserTypes type) {
@@ -76,11 +77,10 @@ public class User implements Comparable {
     @Override
     public int compareTo(Object obj) {
         User that = (User) obj;
-        if (this.type.getProcessOrder() > that.type.getProcessOrder())
-            return 1;
-        if (this.type.getProcessOrder() < that.type.getProcessOrder())
-            return -1;
-        return 0;
+        int result = this.type.compareTo(that.type);
+        if (result == 0) {
+            result = this.login.compareTo(that.login);
+        }
+        return result;
     }
 }
-
