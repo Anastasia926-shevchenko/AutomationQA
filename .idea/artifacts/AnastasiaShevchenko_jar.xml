@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="AnastasiaShevchenko:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/AnastasiaShevchenko_jar</output-path>
+    <root id="archive" name="AnastasiaShevchenko.jar">
+      <element id="module-output" name="AnastasiaShevchenko" />
+    </root>
+  </artifact>
+</component>

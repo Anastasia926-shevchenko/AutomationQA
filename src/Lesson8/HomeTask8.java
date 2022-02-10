@@ -1,22 +1,35 @@
 package Lesson8;
 
+import java.io.*;
+
 public class HomeTask8 {
     public static void main(String[] args) {
-        String text = "australian scientists say they have discovered an unknown spinning object in the Milky Way that they claim is unlike anything seen before. the object - first discovered by a university student - has been observed to release a huge burst of radio energy for a full minute every 18 minutes. objects that pulse energy in the universe are often documented.but researchers say something that turns on for a minute is highly unusual.";
-        String result = actionsWithString(text);
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("InputText.txt"));
+            String text = reader.readLine();
+            actionsWithString(text);
+        } catch (IOException e) {
+            System.out.println("File not exist!");
+        }
     }
 
-    private static String actionsWithString(String text) {
-        String[] array = text.split(" ");
-        for (String words : array) {
-            System.out.println(words);
-        }
+    private static void actionsWithString(String text) {
         String[] stringArray = text.split("\\.");
-        for (int i = 0; i < stringArray.length; i++) {
-            System.out.print(Character.toUpperCase(stringArray[i].trim().
-                    charAt(0)) + stringArray[i].trim().substring(1) + ". ");
+        try (FileWriter writer = new FileWriter("OutputText.txt")) {
+            String[] array = text.split(" ");
+            for (String words : array) {
+                writer.write(words + ",");
+                writer.write("\n");
+            }
+            for (int i = 0; i < stringArray.length; i++) {
+                String result = (Character.toUpperCase(stringArray[i].trim().
+                        charAt(0)) + stringArray[i].trim().substring(1) + ". ");
+                writer.write(result);
+            }
+        } catch (IOException exception) {
+            System.out.println(exception.getMessage());
         }
-        String firstWordLetter = text.substring(0, 1).toUpperCase() + text.substring(1);
-        return firstWordLetter.join(" ", array);
     }
 }
+
