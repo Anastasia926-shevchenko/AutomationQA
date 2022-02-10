@@ -4,14 +4,12 @@ import java.io.*;
 
 public class HomeTask8 {
     public static void main(String[] args) {
-
         try {
             BufferedReader reader = new BufferedReader(new FileReader("InputText.txt"));
             String text = reader.readLine();
             actionsWithString(text);
         } catch (IOException e) {
             System.out.println("File not exist!");
-
         }
     }
 
