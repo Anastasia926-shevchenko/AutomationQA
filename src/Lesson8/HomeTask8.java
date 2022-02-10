@@ -11,7 +11,6 @@ public class HomeTask8 {
             actionsWithString(text);
         } catch (IOException e) {
             System.out.println("File not exist!");
-
         }
     }
 
